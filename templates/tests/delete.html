@@ -1,0 +1,284 @@
+ views.py
+
+def delete(request, pk):
+    pat = Patient.objects.get(id=pk)
+    if request.method == "POST":
+        pat.delete()
+        return redirect('/app/home/')
+    context = {'form': pat}
+    return render(request, 'create.html', context)
+
+urls.py
+ path('delete/<str:pk>/', views.delete, name="delete"),
+
+
+      <td><a class="btn btn-danger" href="{% url 'delete' i.id%}"><svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+</svg></a></td>
+
+
+
+
+
+
+     #forms.py
+
+class BioChemForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['serum_bilirubin', 'Total', 'Direct', 'Indirect', 'SGPT', 'SGOT', 'AlkalinePhosphate', 'TotalProtien',
+                  'TotalAlbumin', 'TotalGlobulin', 'A_G_ratio']
+
+
+class BioChemLipidForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['Serum_Cholestrol', 'Serum_Triglyceride', 'HDL_Cholestrol', 'LDL_Cholesrtol', 'VLDL',
+                  'Total_Chol_HDL_Ratio']
+
+
+class HaemoglobinForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['Haemoglobin', 'ABO', 'RH_Type', 'Bleeding_Time', 'Clotting_Time']
+
+
+
+class KFTForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['Blood_Urea', 'Serum_Creatinine', 'Male', 'Female', 'Serum_Calcium', 'Serum_Sodium', 'Serum_Potassium']
+
+
+
+
+class CBCForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields =  ['Haemoglobin1', 'PCV', 'MCV', 'MCH', 'MCHC', 'Total_RBC', 'Total_WBC', 'Platelet', 'Neutrophils', 'Lymphocytes', 'Eosonophils', 'Monocytes', 'Basophils', 'ESR']
+
+
+
+class semenForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields =  ['col', 'absent', 'amount', 'colour', 'reaction', 'totalcount', 'motility', 'half', 'hrs', 'hrs2', 'normal', 'abnormal', 'pus', 'cells']
+
+
+class SugarForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['BloodSugarF', 'BloodSugarpp', 'hrf2', 'BloodSugarR']
+
+
+class FactorForm(forms.ModelForm):
+    class Meta():
+        model = Patient
+        fields = ['Ra', 'ASO', 'CRP']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     #models
+     test1 = models.BooleanField('BioChemistry LFT', default=False, blank=True)
+    test2 = models.BooleanField('BioChemistry-LIPID', default=False, blank=True)
+    test3 = models.BooleanField('Haemoglobin+ABO RH+BT-CT', default=False, blank=True)
+    test4 = models.BooleanField('BioChemistry KFT', default=False, blank=True)
+    test5 = models.BooleanField('CBC NEW', default=False, blank=True)
+    test6 = models.BooleanField('Semen', default=False, blank=True)
+    test8 = models.BooleanField('A.S.O + C.R.P + RA Factor', default=False, blank=True)
+    test7 = models.BooleanField('B.SUGAR F+PP,R', default=False, blank=True)
+
+
+
+    # BioChemistry LFT
+    serum_bilirubin = models.CharField(max_length=20, blank=True)
+    Total = models.CharField(max_length=20, blank=True)
+    Direct = models.CharField(max_length=20, blank=True)
+    Indirect = models.CharField(max_length=20, blank=True)
+    SGPT = models.CharField(max_length=20, blank=True)
+    SGOT = models.CharField(max_length=20, blank=True)
+    AlkalinePhosphate = models.CharField(max_length=20, blank=True)
+    TotalProtien = models.CharField(max_length=20, blank=True)
+    TotalAlbumin = models.CharField(max_length=20, blank=True)
+    TotalGlobulin = models.CharField(max_length=20, blank=True)
+    A_G_ratio = models.CharField(max_length=20, blank=True)
+
+    # BioChemistry LIPID
+    Serum_Cholestrol = models.CharField(max_length=20, blank=True)
+    Serum_Triglyceride = models.CharField(max_length=20, blank=True)
+    HDL_Cholestrol = models.CharField(max_length=20, blank=True)
+    LDL_Cholesrtol = models.CharField(max_length=20, blank=True)
+    VLDL = models.CharField(max_length=20, blank=True)
+    Total_Chol_HDL_Ratio = models.CharField(max_length=20, blank=True)
+
+    # Haemoglobin+ABO RH+BT-CT
+    Haemoglobin = models.CharField(max_length=20, blank=True)
+    ABO = models.CharField(max_length=20, blank=True)
+    RH_Type = models.CharField(max_length=20, blank=True)
+    Bleeding_Time = models.CharField(max_length=20, blank=True)
+    Clotting_Time = models.CharField(max_length=20, blank=True)
+
+
+    #Biochemistry KFT
+    Blood_Urea = models.CharField(max_length=20, blank=True)
+    Serum_Creatinine = models.CharField(max_length=20, blank=True)
+    Male = models.CharField(max_length=20, blank=True)
+    Female = models.CharField(max_length=20, blank=True)
+    Serum_Calcium = models.CharField(max_length=20, blank=True)
+    Serum_Sodium = models.CharField(max_length=20, blank=True)
+    Serum_Potassium = models.CharField(max_length=20, blank=True)
+
+
+
+    #CBC new
+    Haemoglobin1 = models.CharField(max_length=20, blank=True)
+    PCV = models.CharField(max_length=20, blank=True)
+    MCV = models.CharField(max_length=20, blank=True)
+    MCH = models.CharField(max_length=20, blank=True)
+    MCHC = models.CharField(max_length=20, blank=True)
+    Total_RBC = models.CharField(max_length=20, blank=True)
+    Total_WBC = models.CharField(max_length=20, blank=True)
+    Platelet = models.CharField(max_length=20, blank=True)
+    Neutrophils = models.CharField(max_length=20, blank=True)
+    Lymphocytes = models.CharField(max_length=20, blank=True)
+    Eosonophils = models.CharField(max_length=20, blank=True)
+    Monocytes = models.CharField(max_length=20, blank=True)
+    Basophils = models.CharField(max_length=20, blank=True)
+    ESR = models.CharField(max_length=20, blank=True)
+
+
+    #semen
+    col = models.CharField(max_length=20, blank=True)
+    absent = models.CharField(max_length=20, blank=True)
+    amount = models.CharField(max_length=20, blank=True)
+    colour = models.CharField(max_length=20, blank=True)
+    reaction = models.CharField(max_length=20, blank=True)
+    totalcount = models.CharField(max_length=20, blank=True)
+    motility = models.CharField(max_length=20, blank=True)
+    half = models.CharField(max_length=20, blank=True)
+    hrs = models.CharField(max_length=20, blank=True)
+    hrs2 = models.CharField(max_length=20, blank=True)
+    normal = models.CharField(max_length=20, blank=True)
+    abnormal = models.CharField(max_length=20, blank=True)
+    pus = models.CharField(max_length=20, blank=True)
+    cells = models.CharField(max_length=20, blank=True)
+
+    #B.Sugar
+    BloodSugarF = models.CharField(max_length=20, blank=True)
+    BloodSugarpp = models.CharField(max_length=20, blank=True)
+    hrf2 = models.CharField(max_length=20, blank=True)
+    BloodSugarR = models.CharField(max_length=20, blank=True)
+
+
+    #RA Factor+...
+    Ra = models.CharField(max_length=20, blank=True)
+    ASO = models.CharField(max_length=20, blank=True)
+    CRP = models.CharField(max_length=20, blank=True)
+
+
+
+
+     <div  class="container-sm my-2">
+<div class="row">
+    <div class="col-sm-9 ">
+      <h1 class=" font-italic">Name:{{form.Name}}</h1>
+    </div>
+    <div class="row">
+    <div class="col-sm-12">
+      <h3 class=" font-bold my-3">Recieve Date:-{{form.RecievedDate}}</h3>
+    </div>
+    </div>
+    </div><br>
+    <div class="row">
+      <div class="col-sm-4">
+         <h4 > Age:-{{form.Age}}</h4>
+      </div>
+      <div class="col-sm-4">
+        <h4 >Sex:-{{form.Sex}}</h4>
+    </div>
+    <div class="col-sm-4">
+      <h4 > ReportOn:-{{form.ReportDate}}</h4>
+  </div>
+    </div><br>
+    <div class="row">
+      <div class="col-sm-4 ">
+        <h4>Ref.By:-{{form.ReferenceBy}}</h4>
+      </div>
+      <div class="col-sm-8 ">
+        <h4>Sc No:-{{form.id}}</h4>
+      </div>
+      </div>
+     </div>
+
+
+
+
+     , 'Screa', 'SMale','SFeMale','SCalcium','SSodium','SPott'
+
+
+
+  <tr>
+      <th scope="row">Serum Creatinine</th>
+      <td>{{ bio2.Screa }}</td>
+      <td>mg/dl</td>
+      <td>0.6-1.4</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row">Serum Uric Acid</th>
+
+    </tr>
+  <tr>
+      <th scope="row" class="text-center">Male</th>
+      <td>{{ bio2.SMale }}</td>
+      <td>mg/dl</td>
+      <td>3.4-7.0</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row" class="text-center">Female</th>
+      <td>{{ bio2.SFeMale }}</td>
+      <td>mg/dl</td>
+      <td>2.4-5.7</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row">Serum Calcium</th>
+      <td>{{ bio2.SCalcium }}</td>
+      <td>mg/dl</td>
+      <td>9-11</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row">Serum Sodium</th>
+      <td>{{ bio2.SSodium }}</td>
+      <td>mg/dl</td>
+      <td>135-155</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row">Serum Potassium</th>
+      <td>{{ bio2.SPott }}</td>
+      <td>mg/dl</td>
+      <td>15-40</td>
+    </tr>
+
+

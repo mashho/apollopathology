@@ -1,0 +1,1370 @@
+ {% extends 'base.html' %}
+
+ {% block css %}
+
+{% load static %}
+
+     body{
+     font-size: 80%;
+
+
+     }
+
+    th,td{
+        padding:5px;
+
+     }
+
+
+
+    hr {
+     border-radius: 5px;
+}
+    #text{
+      text-shadow: 1px 0.5px grey;
+     text-decoration:underline;
+     }
+    #line{
+        border: 1px solid black;
+
+     }
+     .footer {
+  position:bottom;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+{% endblock %}
+ {% block content %}
+     <div class="container">
+     <div class="row">
+     <div class="col-3"><br>
+         <img src="{% static 'img/download.png' %}" alt="Health System" width="125px">
+         <h6 style="color:blue">
+             <b> N.U BASHIR AHMAD</b>
+             <br>B.Sc,M.Sc,(Lab Tecnologist)<br>
+             MBA,Hospital(MGT)<br>
+             &nbsp Member(AIMLTA)
+             <br>Reg. No.-144/2014<br>
+             Under Clinical Establishment<br>
+             Contact No. :-9279704858
+
+         </h6>
+     </div>
+          <div class="col-5"><br>
+              <h5 style="color: #003366" class="text-center">Since 2009</h5>
+         <h6 style="color:blue">
+             <b> <h3 class="text-center">NEW APOLLO PATHOLOGY</b>
+             <br>न्यू अपोलो पैथोलॉजी <br><br>
+             DIAGNOSTIC REPORT<br>
+             </h3>
+
+
+         </h6>
+     </div> <div class="col-4"><br><br><br><br>
+         <h4 style="color: red">Health Plus Diagnostic PVT. LTD </h4>
+         <img src="{% static 'img/health.png' %}" alt="Health System" width="100px" class="float-sm-right"><br>
+         <h6 style="color:blue">
+             <b> DR. RAMSEWAK SINGH</b>
+             <br>MBBS MRSH<br>
+             Regd. No:- 15459<br>
+
+
+         </h6>
+     </div>
+     </div>
+     </div>
+<div class="container-fluid my-5">
+<div class="row mx-4">
+    <div class="col-7">
+<h5 class="name">Name :- &nbsp &nbsp {{form.Name}}</h5>
+        </div>
+     <div class="col-4">
+<h5 class="RecieveDate text-right">Recieve Date:- &nbsp &nbsp {{form.RecievedDate}}</h5>
+     </div>
+</div>
+<div class="row mx-4">
+    <div class="col-3">
+<h5 class="age">Age :- &nbsp &nbsp {{form.Age}}</h5>
+        </div>
+     <div class="col-4">
+<h5 class="sex text-center">Sex:- &nbsp &nbsp {{form.Sex}}</h5>
+     </div>
+    <div class="col-4">
+<h5 class="ReportOn text-right">ReportOn:- &nbsp &nbsp {{form.ReportDate}}</h5>
+     </div>
+</div>
+<div class="row mx-4">
+    <div class="col-6">
+<h5 class="name">Ref.By :- &nbsp &nbsp {{form.ReferenceBy}}</h5>
+        </div>
+     <div class="col-4">
+<h5 class="RecieveDate text-right">Sc No:- &nbsp &nbsp {{form.id}}</h5>
+     </div>
+</div>
+</div>>
+<div class="container text-center">
+      <h3>Test of  {{ form.result }}</h3>
+  </div>
+
+<div class="container">
+<table class="table table-borderless">
+  <thead class="thead-dark">
+    <tr class="table-dark">
+      <th scope="col">Investigation</th>
+      <th scope="col">Result</th>
+      <th scope="col">Units</th>
+      <th scope="col">Normal Range</th>
+    </tr>
+  </thead>
+
+     {% if b1 or b2 or b3 or b4 %}
+
+         {% if b1 %}
+             <tr>
+      <th scope="row">Blood Sugar(F)</th>
+      <td>{{ form.t1form }}</td>
+      <td>mg/dl</td>
+      <td>70-110</td>
+    </tr>
+         {% endif %}
+     {% if b2 %}
+             <tr>
+      <th scope="row">Blood Sugar(PP)</th>
+      <td>{{ form.t2form }}</td>
+      <td>mg/dl</td>
+      <td>70-140</td>
+    </tr>
+         {% endif %}
+     {% if b3 %}
+             <tr>
+      <th scope="row">2hr after Food/med</th>
+      <td>{{ form.t3form }}</td>
+
+    </tr>
+         {% endif %}
+     {% if b4 %}
+             <tr>
+      <th scope="row">Blood Sugar(R)</th>
+      <td>{{ form.t4form }}</td>
+      <td>mg/dl</td>
+      <td>70-110</td>
+    </tr>
+         {% endif %}
+    </table>
+{% endif %}
+
+{% if cbc %}
+
+
+    <tr>
+        <th scope="row"><b>Heamoglobin</b></th>
+      <td>{{ form.Haemoglobin1 }}</td>
+      <td>mg/dl</td>
+      <td>11.0-16.0</td>
+    </tr>
+    <tr>
+      <th scope="row">PCV</th>
+      <td>{{ form.PCV }}</td>
+      <td>%</td>
+      <td>35-55</td>
+    </tr>
+    <tr>
+      <th scope="row">MCV</th>
+      <td>{{ form.MCV }}</td>
+      <td>FL</td>
+      <td>76-96</td>
+    </tr>
+    <tr>
+      <th scope="row">MCH</th>
+      <td>{{ form.MCH }}</td>
+      <td>Pg</td>
+      <td>27-32</td>
+    </tr>
+    <tr>
+      <th scope="row">MCHC</th>
+      <td>{{ form.MCHC }}</td>
+      <td>%</td>
+      <td>31-36</td>
+    </tr>
+    <tr>
+        <th scope="row"><sup>*</sup>Total Count</th>
+    </tr>
+
+     <tr>
+      <th scope="row">Total RBC</th>
+      <td>{{ form.Total_RBC }}</td>
+      <td>millions/cu/mm</td>
+      <td>4-6</td>
+    </tr>
+    <tr>
+      <th scope="row">Total WBC</th>
+      <td>{{ form.Total_WBC }}</td>
+      <td>cu/mm</td>
+      <td>4,000-11,000</td>
+    </tr>
+    <tr>
+      <th scope="row">Platelet Count</th>
+      <td>{{ form.Platelet }}</td>
+      <td>cu/mm</td>
+      <td>1,50,000-4,50,000</td>
+    </tr>
+
+
+    <tr>
+        <th scope="row"><sup>*</sup>Differential Count</th>
+    </tr>
+
+
+
+    <tr>
+      <th scope="row">Neutrophills</th>
+      <td>{{ form.Neutrophils }}</td>
+      <td>%</td>
+      <td>35-65</td>
+    </tr>
+    <tr>
+      <th scope="row">Lymphocytes</th>
+      <td>{{ form.Lymphocytes }}</td>
+      <td>%</td>
+      <td>20-35</td>
+    </tr>
+    <tr>
+      <th scope="row">Eosonophils</th>
+      <td>{{ form.Eosonophils }}</td>
+      <td>%</td>
+      <td>01-05</td>
+    </tr>
+    <tr>
+      <th scope="row">Monocytes</th>
+      <td>{{ form.Monocytes }}</td>
+      <td>%</td>
+      <td>01-06</td>
+    </tr>
+    <tr>
+      <th scope="row">Basophils</th>
+      <td>{{ form.Basophils }}</td>
+      <td>%</td>
+      <td>0-1</td>
+    </tr>
+    <tr>
+      <th scope="row">E.S.R</th>
+      <td>{{ form.ESR }}</td>
+      <td>mm</td>
+      <td>05-15</td>
+    </tr>
+{% endif %}
+{% if U1 %}
+
+<tr>
+        <th scope="row" class="font-italic">ORGANISM &nbsp ISOLATED :-&nbsp</th>
+        <td class="text-center"><b>No Growth Of Micro Organism<br></b></td>
+    </tr>
+
+
+
+
+{% endif %}
+
+
+
+{% if U2 %}
+    <div class="row-cols-3">
+<table class="table table-borderless">
+  <thead class="thead-info">
+    <tr>
+      <th scope="row">Organism Isolated:-</th>
+      <td>{{ form.organism }}</td>
+    </tr>
+  </thead>
+    <tr>
+        <th scope="row"><b>ANTIBIOGRAM</b></th>
+
+    </tr>
+    <tr>
+      <th scope="row">Cefepime</th>
+      <td>{{ form.ce  }}</td>
+    </tr><tr>
+      <th scope="row">Gatifloxacin</th>
+      <td>{{ form.ga  }}</td>
+    </tr><tr>
+      <th scope="row">Azithromycin</th>
+      <td>{{ form.az  }}</td>
+    </tr><tr>
+      <th scope="row">Gentamycin</th>
+      <td>{{ form.ge  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Lomefloxacin</th>
+      <td>{{ form.lo  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Amikacin</th>
+      <td>{{ form.am  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Co-Trimxazole</th>
+      <td>{{ form.co  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Chloramphenicol</th>
+      <td>{{ form.chlo  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Norfloxacin</th>
+      <td>{{ form.no  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Cephalexin</th>
+      <td>{{ form.cep  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Erythromycin</th>
+      <td>{{ form.ery  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ciprofloxacin</th>
+      <td>{{ form.cipro  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">O-Floxacin</th>
+      <td>{{ form.of  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Cefotaxime</th>
+      <td>{{ form.cefo  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Pencillin</th>
+      <td>{{ form.pen  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Amoxyclav</th>
+      <td>{{ form.amo  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">P-Floxacin</th>
+      <td>{{ form.pf  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Levofloxacin</th>
+      <td>{{ form.lev  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Lincomycin</th>
+      <td>{{ form.lin  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ceftriaxon</th>
+      <td>{{ form.cef  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Sparfloxacin</th>
+      <td>{{ form.spar  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Naldix Acid</th>
+      <td>{{ form.nal  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Amoxycillin</th>
+      <td>{{ form.amox  }}</td>
+    </tr>
+</table>
+    + &nbsp&nbspIndicates Sensitivity to the drug.<br>
+    R &nbsp&nbspIndicates Resistance to the drug.<br>
+    - &nbsp&nbspIndicates not use the drug.<br>
+    </div>
+{% endif %}
+
+{% if Ur %}
+    <div class="container-md">
+    <div class="row">
+        <div class="col-sm-10">
+<table class="table table-borderless">
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>PHYSICAL EXAMINATION</b></th>
+
+    </tr>
+    <tr>
+      <th class="text-center" scope="row">Colour</th>
+      <td>{{ form.col }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" scope="row">Appearance</th>
+      <td>{{ form.app  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Deposit</th>
+      <td>{{ form.dep  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">SP.Gravity</th>
+      <td>{{ form.spg  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">PH</th>
+      <td>{{ form.ph  }}</td>
+    </tr>
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>CHEMICAL EXAMINATION</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Reaction</th>
+      <td>{{ form.reac  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Sugar</th>
+      <td>{{ form.su  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Albumin</th>
+      <td>{{ form.alb  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Phosphate</th>
+      <td>{{ form.pho  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Urate</th>
+      <td>{{ form.ura  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Bile Salt</th>
+      <td>{{ form.bils  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Bile Pigment</th>
+      <td>{{ form.bilp  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Urobilinogen</th>
+      <td>{{ form.uro  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Ketone Bodies</th>
+      <td>{{ form.ket  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Benzidine</th>
+      <td>{{ form.ben  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Chyle</th>
+      <td>{{ form.chy  }}</td>
+    </tr>
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>MICROSCOPIC EXAMINATION</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Leucocytes</th>
+      <td>{{ form.leu  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Erythrocytes</th>
+      <td>{{ form.eryt  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Epithelieal Cell</th>
+      <td>{{ form.epi  }}</td>
+    </tr>
+
+    <tr>
+        <th class=" text-left px-5" scope="row"><b>Casts</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Granular</th>
+      <td>{{ form.gra  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Hyaline</th>
+      <td>{{ form.hy  }}</td>
+    </tr>
+
+    <tr>
+        <th class=" text-left" scope="row"><b>Crystals</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Calcium Oxalates</th>
+      <td>{{ form.cal  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Tripple Phosphates</th>
+      <td>{{ form.trip  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Amorphous</th>
+      <td>{{ form.amor  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Others</th>
+      <td>{{ form.oth  }}</td>
+    </tr>
+
+ </table>
+        </div>
+    </div>
+    </div>
+{% endif %}
+
+{% if St %}
+    <div class="container-md">
+    <div class="row">
+        <div class="col-sm-7">
+<table class="table table-borderless">
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>Nacked Eye Inspection</b></th>
+
+    </tr>
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspColour</th>
+      <td>{{ form.clr  }}</td>
+    </tr>
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspConsistency</th>
+      <td>{{ form.con  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspOdour</th>
+      <td>{{ form.odo  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspMuscus</th>
+      <td>{{ form.mus  }}</td>
+    </tr>
+
+     <tr>
+        <th scope="row"><b><sup>*</sup>CHEMICAL EXAMINATION</b></th>
+
+    </tr>
+
+
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspReaction</th>
+      <td>{{ form.react  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspReducing Sugar</th>
+      <td>{{ form.red  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspOccult Blood</th>
+      <td>{{ form.occ  }}</td>
+    </tr>
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>MICROSCOPIC EXAMINATION</b></th>
+
+    </tr>
+
+
+    <tr>
+      <th class="text-left" scope="row">1.<b>Protozoa</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspE.H Cyst</th>
+      <td>{{ form.EH  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspEntamoeba Coll</th>
+      <td>{{ form.en  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspGiardia</th>
+      <td>{{ form.gia  }}</td>
+    </tr>
+
+    <tr>
+        <th class="text-left" scope="row">2. <b> HELMINTHIC (OVA)</b></th>
+
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspRound Worm</th>
+      <td>{{ form.Rou  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspHook Worm</th>
+      <td>{{ form.hoo  }}</td>
+    </tr>
+
+
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspPin Worm</th>
+      <td>{{ form.pin  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspWhip Worm</th>
+      <td>{{ form.whip  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspTape Worm</th>
+      <td>{{ form.tap  }}</td>
+    </tr>
+
+    <tr>
+        <th class="text-left" scope="row">&nbsp&nbsp<b>H.Nana</b></th>
+         <td>{{ form.na  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspS.S.Larva</th>
+      <td>{{ form.lar  }}</td>
+    </tr>
+
+    <tr>
+        <th class="text-md-left" scope="row">3. <b> CELULAR ELEMENT</b></th>
+
+    </tr>
+
+    <tr>
+        <th class="text-left" scope="row">&nbsp&nbsp<b>Deg Leucocytes</b></th>
+        <td>{{ form.deg  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspErythrocyte</th>
+      <td>{{ form.comp  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspUndigested Cells</th>
+      <td>{{ form.undi  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspAny Others</th>
+      <td>{{ form.anyo  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-left" scope="row">&nbsp&nbspOthers</th>
+      <td>{{ form.other  }}</td>
+    </tr>
+
+ </table>
+        </div>
+    </div>
+    </div>
+{% endif %}
+
+
+
+{% if sem %}
+      <div class="container-md">
+    <div class="row">
+        <div class="col-sm-7">
+<table class="table table-borderless">
+
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>Physical Examination</b></th>
+
+    </tr>
+    <tr>
+      <th class="text-center" scope="row">Method of Collection</th>
+      <td>{{ form.MOC  }}</td>
+    </tr>
+    <tr>
+      <th class="text-center" scope="row">Absent</th>
+      <td>{{ form.Ab  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Amount</th>
+      <td>{{ form.Amount  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Colour</th>
+      <td>{{  form.CL }}</td>
+    </tr>
+
+     <tr>
+        <th scope="row"><b><sup>*</sup>CHEMICAL EXAMINATION</b></th>
+
+    </tr>
+
+
+
+    <tr>
+      <th class="text-center" scope="row">Reaction</th>
+      <td>{{ form.Re  }}</td>
+    </tr>
+
+
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>MICROSCOPIC EXAMINATION</b></th>
+
+    </tr>
+
+
+
+    <tr>
+      <th class="text-center" scope="row">Total Count</th>
+      <td>{{ form.TC  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Motility</th>
+      <td>{{ form.MO  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">1/2 AN HRS</th>
+      <td>{{ form.half  }}</td>
+    </tr>
+
+    <tr>
+        <th class="text-center" scope="row">1 AN HRS</th>
+        <td>{{ form.one  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">2 AN HRS</th>
+      <td>{{ form.two  }}</td>
+    </tr>
+
+
+    <tr>
+        <th scope="row"><b><sup>*</sup>Morphology</b></th>
+
+    </tr>
+
+
+    <tr>
+      <th class="text-center" scope="row">Normal</th>
+      <td>{{ form.nor  }}</td>
+    </tr>
+
+
+
+    <tr>
+      <th class="float-right" scope="row">Abnormal</th>
+      <td>{{ form.abnor  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Pus Cells</th>
+      <td>{{ form.pc  }}</td>
+    </tr>
+
+    <tr>
+      <th class="text-center" scope="row">Epithelial Cells</th>
+      <td>{{ form.epith  }}</td>
+    </tr>
+
+ </table>
+        </div>
+    </div>
+    </div>
+{% endif %}
+
+
+{% if F1 or F2 or F3 or F4 or F5 or F6 %}
+
+
+
+    {% if F1 %}
+
+        <tr>
+      <th scope="row">Haemoglobin</th>
+      <td>{{ form.f1 }}</td>
+      <td>mg/dl</td>
+      <td>11.0-14.5</td>
+    </tr>
+     {% endif %}
+
+    {% if F2 %}
+         <tr>
+      <th scope="row">Blood Group</th>
+
+
+    </tr>
+        <tr>
+      <th scope="row">A.B.O</th>
+      <td>{{ form.f2 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row">Rh Type</th>
+      <td>{{ form.f3 }}</td>
+
+    </tr>
+     {% endif %}
+
+
+    {% if F3 %}
+
+        <tr>
+      <th scope="row">Bleeding Time</th>
+      <td>{{ form.f4 }}</td>
+        <td></td>
+      <td>1-4min,"Dukes"</td>
+
+    </tr>
+        <tr>
+      <th scope="row">Clotting Time</th>
+      <td>{{ form.f5 }}</td>
+        <td></td>
+      <td>2-8min,"Capl"</td>
+
+    </tr>
+     {% endif %}
+
+      {% if F4 %}
+         <tr>
+             <th scope="row"><strong><sup>*</sup>Total Count</strong></th>
+         </tr>
+        <tr>
+      <th scope="row">Total WBC</th>
+      <td>{{ form.f6 }}</td>
+      <td>cumm</td>
+      <td>4,400-10,000</td>
+    </tr>
+     {% endif %}
+
+
+     {% if F5 %}
+         <tr>
+             <th scope="row"><strong><sup>*</sup>Differential Count</strong></th>
+         </tr>
+        <tr>
+      <th scope="row">Neutrophils</th>
+      <td>{{ form.f7 }}</td>
+      <td>%</td>
+      <td>35-65</td>
+    </tr>
+         <tr>
+      <th scope="row">Lymphocytes</th>
+      <td>{{ form.f8 }}</td>
+      <td>%</td>
+      <td>20-35</td>
+    </tr>
+         <tr>
+      <th scope="row">Eosonophils</th>
+      <td>{{ form.f9 }}</td>
+      <td>%</td>
+      <td>01-06</td>
+    </tr>
+         <tr>
+      <th scope="row">Monocytes</th>
+      <td>{{ form.f10 }}</td>
+      <td>%</td>
+      <td>01-03</td>
+    </tr>
+         <tr>
+      <th scope="row">Basophils</th>
+      <td>{{ form.f11 }}</td>
+      <td>%</td>
+      <td>0-1</td>
+    </tr>
+     {% endif %}
+
+    {% if F6 %}
+
+        <tr>
+      <th scope="row">ESR(1st Hours) </th>
+      <td>{{ form.f12 }}</td>
+      <td>mm</td>
+      <td>Male:-3-15/Female:-5-25</td>
+    </tr>
+     {% endif %}
+
+
+{% endif %}
+
+
+{% if sero1 or sero2 or sero3 or sero4 or sero5 or sero6 or sero7 %}
+
+        {% if sero1  %}
+
+
+        <tr>
+      <th scope="row">HIV(I,II)</th>
+      <td>{{ form.s1 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row">HBsAG</th>
+      <td>{{ form.s2 }}</td>
+
+    </tr>
+
+            <tr>
+      <th scope="row">V.D.R.L</th>
+      <td>{{ form.s3 }}</td>
+
+    </tr>
+         {% endif %}
+
+    {% if sero2 %}
+
+        <tr>
+      <th scope="row">Dengue Test</th>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(IgG)</th>
+      <td>{{ form.s4 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(IgM)</th>
+      <td>{{ form.s5 }}</td>
+
+    </tr>
+
+            <tr>
+      <th scope="row" class="text-center">(Ns1)</th>
+      <td>{{ form.s6 }}</td>
+
+    </tr>
+
+
+    {% endif %}
+ {% if sero3 %}
+
+        <tr>
+      <th scope="row">Elisa For TYPHOID</th>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(IgG)</th>
+      <td>{{ form.s7 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(IgM)</th>
+      <td>{{ form.s8 }}</td>
+
+    </tr>
+<tr>
+      <th scope="row">Elisa For HCV</th>
+
+    </tr>
+            <tr>
+      <th scope="row" class="text-right">:-</th>
+      <td>{{ form.s9 }}</td>
+
+    </tr>
+
+
+    {% endif %}
+
+{% if sero4 %}
+
+
+        <tr>
+      <th scope="row" class="text-left">Rapid Test For MALERIA</th>
+      <td>{{ form.s10 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-left">Optimal Maleria Antigen</th>
+      <td>{{ form.s11 }}</td>
+
+    </tr>
+
+    {% endif %}
+
+
+
+{% if sero6 %}
+
+ <tr>
+      <th scope="row" class="text-left">MANTOUX TUBRCULIN TEST</th>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(10TU)</th>
+      <td>{{ form.s36 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">(5TU)</th>
+      <td>{{ form.s37 }}</td>
+
+    </tr>
+     <tr>
+      <th scope="row" class="text-left">SPUTUM Test</th>
+      <td>{{ form.s38 }}</td>
+
+    </tr>
+
+    {% endif %}
+
+
+{% if sero7 %}
+
+ <tr>
+      <th scope="row" class="text-left">RAPID Test</th>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">RA Factor</th>
+      <td>{{ form.s39 }}</td>
+
+    </tr>
+        <tr>
+      <th scope="row" class="text-center">A.S.O</th>
+      <td>{{ form.s40 }}</td>
+
+    </tr>
+     <tr>
+      <th scope="row" class="text-center">C.R.P</th>
+      <td>{{ form.s41 }}</td>
+
+    </tr>
+
+    {% endif %}
+
+
+
+
+{% if sero5 %}
+
+
+<tr>
+      <th scope="row" >Widal Test</th>
+        <th scope="row" >{{form.St9}}</th>
+<td>
+                <table class="table-bordered">
+
+  <thead class="table-bordered">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">1/20</th>
+      <th scope="col">1/40</th>
+      <th scope="col">1/80</th>
+      <th scope="col">1/160</th>
+      <th scope="col">1/320</th>
+      <th scope="col">C</th>
+    </tr>
+  </thead>
+  <tbody class="table-bordered">
+    <tr class="table-bordered">
+      <th scope="row" >'O'</th>
+      <td>{{ form.s12 }}</td>
+      <td>{{ form.s13 }}</td>
+      <td>{{ form.s14 }}</td>
+      <td>{{ form.s15 }}</td>
+      <td>{{ form.s16 }}</td>
+      <td>{{ form.s17 }}</td>
+    </tr>
+    <tr class="table-bordered" >
+      <th scope="row">'H'</th>
+      <td>{{ form.s18 }}</td>
+      <td>{{ form.s19 }}</td>
+        <td>{{form.s20}}</td>
+      <td>{{form.s21}}</td>
+      <td>{{form.s22}}</td>
+      <td>{{form.s23}}</td>
+
+    </tr>
+  <tr class="table-bordered">
+      <th scope="row">'AH'</th>
+      <td>{{form.s24}}</td>
+      <td>{{form.s25}}</td>
+      <td>{{form.s26}}</td>
+      <td>{{form.s27}}</td>
+      <td>{{form.s28}}</td>
+      <td>{{form.s29}}</td>
+
+    </tr>
+
+  <tr class="table-bordered">
+      <th scope="row">'BH'</th>
+      <td>{{form.s30}}</td>
+      <td>{{form.s31}}</td>
+      <td>{{form.s32}}</td>
+      <td>{{form.s33}}</td>
+      <td>{{form.s34}}</td>
+      <td>{{form.s35}}</td>
+
+    </tr>
+  </tbody>
+</table>
+</td>
+
+    </tr>
+ {% endif %}
+
+{% endif %}
+{% if B1 or B2 or B3 or B4 or B5 or alk or d1 or d2 or d3 or d4 or d5 or d6 %}
+
+{% if B1 %}
+
+
+    <tr>
+      <th scope="row">Total Cholestrol</th>
+      <td>{{ form.Total_chol }}</td>
+      <td>mg/dl</td>
+      <td>150-250</td>
+    </tr>
+     <tr>
+      <th scope="row">Serum Triglyceride</th>
+      <td>{{ form.Serum }}</td>
+      <td>mg/dl</td>
+      <td>60-170</td>
+    </tr>
+     <tr>
+      <th scope="row">HDL Cholestrol</th>
+      <td>{{ form.HDL }}</td>
+      <td>mg/dl</td>
+      <td>30-65</td>
+    </tr><tr>
+      <th scope="row">LDL Cholestrol</th>
+      <td>{{ ldl }}</td>
+      <td>mg/dl</td>
+      <td>90-160</td>
+    </tr><tr>
+      <th scope="row">VLDL</th>
+      <td>{{ vldl }}</td>
+      <td>mg/dl</td>
+      <td>13-38</td>
+    </tr><tr>
+      <th scope="row">Total Chol./HDL Ratio</th>
+      <td>{{ rat }}</td>
+      <td></td>
+      <td>upto 4.5</td>
+    </tr>
+
+{% endif %}
+
+{% if B2 %}
+
+
+  <tr>
+      <th scope="row">Blood Urea</th>
+      <td>{{ form.BU }}</td>
+      <td>mg/dl</td>
+      <td>15-40</td>
+    </tr>
+
+{% endif %}
+
+{% if B3 %}
+
+    <tr>
+      <th scope="row">Serum Protien</th>
+
+    </tr>
+  <tr>
+      <th scope="row" class="text-center">Total Protien</th>
+      <td>{{ form.Tpro }}</td>
+      <td>mg/dl</td>
+      <td>6.0-8.0</td>
+    </tr>
+
+  <tr>
+      <th scope="row" class="text-center">Total Albumin</th>
+      <td>{{ form.Talbo }}</td>
+      <td>mg/dl</td>
+      <td>3.5-5.0</td>
+    </tr>
+
+    <tr>
+      <th scope="row" class="text-center">Total Globulin</th>
+      <td>{{ glob }}</td>
+      <td>mg/dl</td>
+      <td>2.0-3.5</td>
+    </tr>
+
+  <tr>
+      <th scope="row" >A/G Ratio</th>
+      <td>{{ agratio }}</td>
+      <td>mg/dl</td>
+      <td>1.0-2.1</td>
+    </tr>
+{% endif %}
+
+{% if B4 %}
+
+
+<tr>
+      <th scope="row" >S.G.P.T(ALT)</th>
+      <td>{{ form.sgptalt }}</td>
+      <td>Unit/ml</td>
+      <td>5-35</td>
+    </tr>
+
+
+
+
+{% endif %}
+   {% if B5 %}
+        <tr>
+      <th scope="row" >Serum Bilirubin</th>
+    </tr>
+ <tr>
+      <th scope="row" class="text-center" >Total</th>
+      <td>{{form.totka}}</td>
+     <td>mg/dl</td>
+      <td>0.2-1.2</td>
+    </tr>
+
+    <tr>
+      <th scope="row" class="text-center">Direct</th>
+      <td>{{form.directa}}</td>
+      <td>mg/dl</td>
+      <td>0.1-0.4</td>
+    </tr>
+       <tr>
+      <th scope="row" class="text-center">Indirect</th>
+      <td>{{result}}</td>
+      <td>mg/dl</td>
+      <td>0.2-0.7</td>
+    </tr>
+
+{% endif %}
+
+    {% if alk %}
+
+    <tr>
+      <th scope="row" >Alkaline Phosphate</th>
+      <td>{{form.akg}}</td>
+      <td>U/L</td>
+      <td>46-116</td>
+    </tr>
+
+{% endif %}
+
+
+    {% if d1 %}
+
+         <tr>
+      <th scope="row">Serum Creatinine</th>
+      <td>{{ form.Screa }}</td>
+      <td>mg/dl</td>
+      <td>0.6-1.4</td>
+    </tr>
+
+    {% endif %}
+
+
+    {% if d2 %}
+
+
+  <tr>
+      <th scope="row">Serum Uric Acid</th>
+
+    </tr>
+  <tr>
+      <th scope="row" class="text-center">Male</th>
+      <td>{{ form.SMale }}</td>
+      <td>mg/dl</td>
+      <td>3.4-7.0</td>
+    </tr>
+
+
+  <tr>
+      <th scope="row" class="text-center">Female</th>
+      <td>{{ form.SFeMale }}</td>
+      <td>mg/dl</td>
+      <td>2.4-5.7</td>
+    </tr>
+        {% endif %}
+    {% if d3 %}
+         <tr>
+      <th scope="row">Serum Calcium</th>
+      <td>{{ form.SCalcium }}</td>
+      <td>mg/dl</td>
+      <td>9-11</td>
+    </tr>
+        {% endif %}
+    {% if d4 %}
+       <tr>
+      <th scope="row">Serum Sodium</th>
+      <td>{{ form.SSodium }}</td>
+      <td>mg/dl</td>
+      <td>135-155</td>
+    </tr>
+
+        {% endif %}
+    {% if d5 %}
+       <tr>
+      <th scope="row">Serum Sodium</th>
+      <td>{{ form.SSodium }}</td>
+      <td>mg/dl</td>
+      <td>135-155</td>
+    </tr>
+
+        {% endif %}
+  {% if d6 %}
+
+        <tr>
+      <th scope="row" >S.G.O.T(ALT)</th>
+      <td>{{form.sgotfield}}</td>
+      <td>Unit/ml</td>
+      <td>5-40</td>
+    </tr>
+        {% endif %}
+
+
+
+
+{% endif %}
+    </table>
+<div class="container py-5"><br><br><br>
+    <h4 class="text-center">.....End of Report......</h4>
+</div>
+
+
+
+</div>
+     <div class="container card-footer align-bottom">
+     <div class="footer text-center">
+         <b>Note</b>:-Kindly co-relate the clinical things and other supportive investigation this report is only for treatment part not <br>
+         for medico legal process if result is unexpected or alarming which may be due to unwanted technical fault<br><h6>please contact the lab</h6>
+     </div>
+     </div>
+{% endblock %}
